@@ -1,0 +1,69 @@
+{
+  "name": "changelog-generation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "release": "release-it",
+    "release:patch": "release-it patch",
+    "release:minor": "release-it minor",
+    "release:major": "release-it major"
+  },
+  "keywords": [],
+  "author": "Meet Kalani",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
+    "@release-it/conventional-changelog": "^10.0.1",
+    "release-it": "^19.0.4"
+  },
+  "release-it": {
+    "git": {
+      "commitMessage": "chore(release): v${version}"
+    },
+    "gitlab": {
+      "release": true,
+      "tokenRef": "GITLAB_TOKEN",
+      "host": "http://github.com",
+      "releaseName": "v${version}",
+      "skipChecks": true,
+      "origin": "http://10.35.120.81",
+      "projectId": "Meet/conventional-commits-demo"
+    },
+    "npm": {
+      "publish": false
+    },
+    "plugins": {
+      "@release-it/conventional-changelog": {
+        "infile": "CHANGELOG.md",
+        "preset": {
+          "name": "conventionalcommits",
+          "types": [
+            {
+              "type": "feat",
+              "section": "Features"
+            },
+            {
+              "type": "fix",
+              "section": "Bug Fixes"
+            },
+            {
+              "type": "perf",
+              "section": "Performance Improvements"
+            },
+            {
+              "type": "refactor",
+              "section": "Code Refactoring"
+            },
+            {
+              "type": "chore",
+              "section": "Chores"
+            }
+          ]
+        }
+      }
+    }
+  }
+}
