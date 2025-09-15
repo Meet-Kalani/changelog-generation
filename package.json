@@ -23,14 +23,14 @@
     "git": {
       "commitMessage": "chore(release): v${version}"
     },
-    "gitlab": {
+    "github": {
       "release": true,
-      "tokenRef": "GITLAB_TOKEN",
-      "host": "http://github.com",
+      "tokenRef": "GITHUB_TOKEN",
+      "host": "https://github.com",
       "releaseName": "v${version}",
       "skipChecks": true,
-      "origin": "http://10.35.120.81",
-      "projectId": "Meet/conventional-commits-demo"
+      "origin": "https://github.com",
+      "projectId": "Meet-Kalani/changelog-generation"
     },
     "npm": {
       "publish": false
