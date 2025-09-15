@@ -16,10 +16,12 @@
   "devDependencies": {
     "@commitlint/cli": "^19.8.1",
     "@commitlint/config-conventional": "^19.8.1",
-    "@release-it/conventional-changelog": "^10.0.1",
     "release-it": "^19.0.4"
   },
   "release-it": {
+    "hooks": {
+      "after:bump": "node scripts/generate-changelog.js"
+    },
     "git": {
       "commitMessage": "chore(release): v${version}"
     },
@@ -34,36 +36,6 @@
     },
     "npm": {
       "publish": false
-    },
-    "plugins": {
-      "@release-it/conventional-changelog": {
-        "infile": "CHANGELOG.md",
-        "preset": {
-          "name": "conventionalcommits",
-          "types": [
-            {
-              "type": "feat",
-              "section": "Features"
-            },
-            {
-              "type": "fix",
-              "section": "Bug Fixes"
-            },
-            {
-              "type": "perf",
-              "section": "Performance Improvements"
-            },
-            {
-              "type": "refactor",
-              "section": "Code Refactoring"
-            },
-            {
-              "type": "chore",
-              "section": "Chores"
-            }
-          ]
-        }
-      }
     }
   }
 }
